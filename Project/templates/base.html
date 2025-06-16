@@ -5,6 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costumizable calculator</title>
     <style>
+    body {
+
+            margin: 0;
+
+            height: 100vh;
+
+            background-color: #EDE7E3;
+
+            color: #EDE7E3;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+        }
+
+
+
+    input[type=text]{
+        background-color:rgb(95, 94, 94);
+        padding: 25px 34px;
+        border-color: black;
+        text-align:left;
+
+    }
+    .textbox{
+        display: flex;
+        justify-content:center;
+    }
+    
     .button{
         background-color:rgb(95, 94, 94);
         padding: 25px 35px;
@@ -17,13 +49,12 @@
     .row{
         display:flex;
         justify-content: center;
+        
     }
     #row1{
         display: flex;
         flex-direction: row-reverse;
     }
-    
-
     #special_5{
         padding: 25px 33px;
     }
@@ -43,14 +74,19 @@
 </head>
 <body>
     <h1>Calculator</h1>
+    <!--All special buttons must not have their id erased because they affect the row's alignment-->
+    <div>
+        <form class = "textbox">
+            <input type="text" id="Name" class="textbox" placeholder="calculation" onchange="myFunction(event)" value="myValue">
+            <input type = "submit" value = "=" class = "button">
+        </form>    
+    </div>
     
-
     <div class = "row"  id = "row1">
         <button class = "button" id = "special_1">÷</button>
         <button class = "button">9</button>
         <button class = "button">8</button>
         <button class = "button">7</button>
-        
     </div>
     
     <div class = "row">
@@ -70,9 +106,17 @@
         <button class = "button">0</button>
         <button class = "button"  id = "special_5">%</button>
         <button class = "button">+</button>
-        
     </div>
 
+    <script>
+        var input = document.getElementById('Name');
+        var myValue = 'calc';
+        input.value = myValue;
+        var myFunction = function (e) {
+        console.log(e.target.value);
+        }
 
+
+    </script>
 </body>
 </html>
