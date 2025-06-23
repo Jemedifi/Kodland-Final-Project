@@ -3,45 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costumizable calculator</title>
+    <title>Customizable Calculator</title>
     <style>
-    body {
-
-            margin: 0;
-
-            height: 100vh;
-
-            background-color: #EDE7E3;
-
-            color: #EDE7E3;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-        }
-
-
-
     input[type=text]{
         background-color:rgb(95, 94, 94);
         padding: 25px 34px;
         border-color: black;
         text-align:left;
-
+        color: white;
     }
     .textbox{
         display: flex;
         justify-content:center;
     }
-    
     .button{
         background-color:rgb(95, 94, 94);
         padding: 25px 35px;
         border-color: black;
         text-align: center;
+        cursor: pointer;
     }
     .button:active{
         transform: translateY(4px);
@@ -49,7 +29,6 @@
     .row{
         display:flex;
         justify-content: center;
-        
     }
     #row1{
         display: flex;
@@ -74,21 +53,21 @@
 </head>
 <body>
     <h1>Calculator</h1>
-    <!--All special buttons must not have their id erased because they affect the row's alignment-->
     <div>
-        <form class = "textbox">
-            <input type="text" id="Name" class="textbox" placeholder="calculation" onchange="myFunction(event)" value="myValue">
-            <input type = "submit" value = "=" class = "button">
-        </form>    
+        <form class = "textbox" method = "post">
+                <input type="text" id="userInput" name="userInput" value="{{ display_result if display_result else '' }}">
+                <input type="hidden" id="jsVariable" name="jsVariable">
+                <button type="submit" onclick="setHiddenField()" class = "button">=</button>
+        </form>
     </div>
-    
+
     <div class = "row"  id = "row1">
-        <button class = "button" id = "special_1">÷</button>
+        <button class = "button">÷</button>
         <button class = "button">9</button>
         <button class = "button">8</button>
         <button class = "button">7</button>
     </div>
-    
+
     <div class = "row">
         <button class = "button">4</button>
         <button class = "button">5</button>
@@ -109,14 +88,39 @@
     </div>
 
     <script>
-        var input = document.getElementById('Name');
-        var myValue = 'calc';
-        input.value = myValue;
-        var myFunction = function (e) {
-        console.log(e.target.value);
+        function setHiddenField() {
+            const myVariable = userInput.value;
+            document.getElementById('jsVariable').value = myVariable;
         }
 
+        const calculatorDisplay = document.getElementById('userInput');
+        const calculatorButtons = document.querySelectorAll('.row .button');
 
+        calculatorButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                let buttonText = this.textContent;
+
+                if (buttonText === 'C') {
+                    calculatorDisplay.value = '';
+                } else if (buttonText === '=') {
+                    // Handled by form submission
+                } else {
+                    if (buttonText === 'x') {
+                        buttonText = '*';
+                    } else if (buttonText === '÷') {
+                        buttonText = '/';
+                    }
+                    calculatorDisplay.value += buttonText;
+                }
+            });
+        });
+
+        if ("{{ display_result }}" && "{{ display_result }}" !== "None") {
+            calculatorDisplay.value = "{{ display_result }}";
+        } else {
+            calculatorDisplay.value = '';
+        }
     </script>
 </body>
 </html>
