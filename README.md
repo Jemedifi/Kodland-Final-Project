@@ -51,7 +51,7 @@ To run this project on your computer, follow these steps:
    With your virtual environment active, run your Flask application file (e.g., `app.py` or `main.py`):
 
     ```bash
-      python app.py
+    python app.py
     ```
 
 5.  **Open in your browser:**
