@@ -43,7 +43,7 @@ To run this project on your computer, follow these steps:
 
 
    Otherwise, you'll need to install Flask manually:
-    ```Bash
+    ```
     pip install Flask
     ```
 
