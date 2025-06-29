@@ -21,8 +21,6 @@ This project is a web-based calculator.
   * **JavaScript:** This powers the calculator's functions and how it interacts with users.
   * **Flask:** This is a Python framework used for the server part of the application.
   * **Jinja:** This helps in creating dynamic HTML pages using Python.
-  * **uv:** A modern, fast tool for managing Python virtual environments and packages. The virtual environment for this project is already included in the repository.
-
 -----
 
 ## How to Get Started
@@ -37,33 +35,26 @@ To run this project on your computer, follow these steps:
     ```
 
     Otherwise, simply save the project files to your computer.
-
-2.  **Activate the virtual environment:**
-    Since the virtual environment (`.venv`) is already included, you just need to activate it:
-
-      * On macOS/Linux:
-        ```bash
-        source .venv/bin/activate
-        ```
-      * On Windows (PowerShell):
-        ```bash
-        . .venv\Scripts\Activate.ps1
-        ```
-      * On Windows (Command Prompt):
-        ```bash
-        .venv\Scripts\activate.bat
-        ```
-
-    Once activated, your terminal prompt should change (often showing `(.venv)`), indicating you're in the right environment.
-
-3.  **Start the application:**
-    With your virtual environment active, run your Flask application file (e.g., `app.py` or `main.py`):
-
-    ```bash
-    python app.py
+2.  **Install dependencies:**
+   If you're using a requirements.txt file (recommended for Flask projects), install the necessary Python packages:
+    ```Bash
+    pip install -r requirements.txt
     ```
 
-4.  **Open in your browser:**
+
+   Otherwise, you'll need to install Flask manually:
+    ```Bash
+    pip install Flask
+    ```
+
+4.  **Start the application:**
+   With your virtual environment active, run your Flask application file (e.g., `app.py` or `main.py`):
+
+    ```bash
+      python app.py
+    ```
+
+5.  **Open in your browser:**
     After the Flask server starts, open your web browser and go to the address shown in your terminal (typically `http://127.0.0.1:5000/`).
 
 -----
